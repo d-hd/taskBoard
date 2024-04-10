@@ -17,8 +17,7 @@ const navItems = [
   <div class="theNavbar">
     <RouterLink
       class="theNavbar__logo"
-      to="/"
-    >
+      to="/">
       TaskBoard
     </RouterLink>
     <ul class="theNavbar__navbar">
@@ -29,10 +28,9 @@ const navItems = [
           class="theNavbar__navbarItem">
           <RouterLink
             class="theNavbar__navbarLink"
-            :to="path"
-        >
-          {{ name }}
-        </RouterLink>
+            :to="path">
+            {{ name }}
+          </RouterLink>
         </li>
       </ul>
     </ul>

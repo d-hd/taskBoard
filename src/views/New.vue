@@ -1,3 +1,4 @@
+<!-- eslint-disable vue/multi-word-component-names -->
 <script setup></script>
 
 <template>
@@ -5,24 +6,32 @@
     <h1>Создать новую задачу</h1>
     <div class="form-control">
       <label for="title">Название</label>
-      <input type="text" id="title" />
+      <input
+        id="title"
+        type="text">
     </div>
 
     <div class="form-control">
       <label for="tag">Тег</label>
-      <input type="text" id="tag" />
+      <input
+        id="tag"
+        type="text">
     </div>
 
     <div class="form-control">
       <label for="date">Дата дедлайна</label>
-      <input type="date" id="date" />
+      <input
+        id="date"
+        type="date">
     </div>
 
     <div class="form-control">
       <label for="description">Описание</label>
-      <textarea id="description"></textarea>
+      <textarea id="description" />
     </div>
 
-    <button class="btn primary">Создать</button>
+    <button class="btn primary">
+      Создать
+    </button>
   </form>
 </template>
