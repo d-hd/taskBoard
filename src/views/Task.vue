@@ -1,6 +1,6 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <script setup>
-import AppStatus from '../components/AppStatus.vue';
+import AppStatus from '../components/AppStatus.vue'
 </script>
 
 <template>
@@ -13,15 +13,15 @@ import AppStatus from '../components/AppStatus.vue';
     <p><strong>Дэдлайн</strong>: {{ new Date().toLocaleDateString() }}</p>
     <p><strong>Описание</strong>: Описание задачи</p>
     <div>
-      <button class="btn">
+      <AppButton>
         Взять в работу
-      </button>
-      <button class="btn primary">
+      </AppButton>
+      <AppButton type="primary">
         Завершить
-      </button>
-      <button class="btn danger">
+      </AppButton>
+      <AppButton type="danger">
         Отменить
-      </button>
+      </AppButton>
     </div>
   </div>
   <h3 class="text-white center">

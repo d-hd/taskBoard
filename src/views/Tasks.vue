@@ -1,6 +1,6 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <script setup>
-import AppStatus from '../components/AppStatus.vue';
+import AppStatus from '../components/AppStatus.vue'
 </script>
 
 <template>
@@ -25,6 +25,7 @@ import AppStatus from '../components/AppStatus.vue';
           </small>
         </strong>
       </p>
+      <AppButton />
       <button class="btn primary">
         Посмотреть
       </button>

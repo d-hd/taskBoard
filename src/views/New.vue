@@ -1,28 +1,23 @@
 <!-- eslint-disable vue/multi-word-component-names -->
-<script setup></script>
+<script setup>
+</script>
 
 <template>
   <form class="card">
     <h1>Создать новую задачу</h1>
     <div class="form-control">
       <label for="title">Название</label>
-      <input
-        id="title"
-        type="text">
+      <input id="title" type="text">
     </div>
 
     <div class="form-control">
       <label for="tag">Тег</label>
-      <input
-        id="tag"
-        type="text">
+      <input id="tag" type="text">
     </div>
 
     <div class="form-control">
       <label for="date">Дата дедлайна</label>
-      <input
-        id="date"
-        type="date">
+      <input id="date" type="date">
     </div>
 
     <div class="form-control">
@@ -30,8 +25,8 @@
       <textarea id="description" />
     </div>
 
-    <button class="btn primary">
+    <AppButton type="primary">
       Создать
-    </button>
+    </AppButton>
   </form>
 </template>

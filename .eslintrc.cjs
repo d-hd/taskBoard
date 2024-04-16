@@ -1,7 +1,7 @@
 module.exports = {
   extends: ['plugin:vue/vue3-recommended'],
   rules: {
-    semi: ['error', 'always'],
+    semi: ['error', 'never'],
     quotes: ['error', 'single'],
     'vue/require-default-prop': 'off',
     'vue/max-attributes-per-line': [
@@ -33,4 +33,4 @@ module.exports = {
     ],
     'vue/no-v-html': 'off'
   }
-};
+}

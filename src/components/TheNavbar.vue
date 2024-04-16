@@ -1,5 +1,5 @@
 <script setup>
-import { RouterLink } from 'vue-router';
+import { RouterLink } from 'vue-router'
 
 const navItems = [
   {
@@ -10,7 +10,7 @@ const navItems = [
     name: 'Создать',
     path: '/new'
   }
-];
+]
 </script>
 
 <template>

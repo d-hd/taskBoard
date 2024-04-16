@@ -9,7 +9,7 @@ const props = defineProps({
     type: Boolean,
     desc: 'Включает/отключает дизейбл'
   }
-});
+})
 </script>
 
 <template>
@@ -49,10 +49,10 @@ const props = defineProps({
 
 .btn:disabled {
   cursor: not-allowed;
-  opacity: 1 !important;
-  background: #eee !important;
-  border-color: #ddd !important;
-  color: #999 !important;
+  opacity: 1;
+  background: #eee;
+  border-color: #ddd;
+  color: #999;
 }
 
 .btn:active {
