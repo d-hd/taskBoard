@@ -10,7 +10,7 @@ const props = defineProps({
     type: String,
     desc: 'Текст лейбла'
   },
-  name: {
+  id: {
     type: String,
     desc: 'Атрибут name'
   },
@@ -45,35 +45,33 @@ watch(() => props.modelValue, (newValue) => {
 </script>
 
 <template>
-  <div :class="['formInput', focusClass]">
-    <div class="formInput__remark">
-      <div class="formInput__error">
+  <div :class="['formSelect', focusClass]">
+    <div class="formSelect__remark">
+      <div class="formSelect__error">
         {{ errorText }}
       </div>
-      <div class="formInput__placeholder">
+      <div class="formSelect__placeholder">
         {{ placeholder }}
       </div>
     </div>
     <label
-      class="formInput__label"
+      class="formSelect__label"
       for="name">
       {{ label }}
     </label>
-    <input
-      id="name"
+    <textarea
+      id="id"
       v-model="internalValue"
-      class="formInput__input"
+      class="formSelect__textarea"
       :placeholder="placeholder"
-      :name="name"
-      type="text"
-      @input="updateValue"
       @focus="changeFocusClass"
-      @blur="changeFocusClass">
+      @blur="changeFocusClass"
+      @input="updateValue" />
   </div>
 </template>
 
 <style scoped>
-.formInput {
+.formSelect {
   position: relative;
   margin-bottom: 0.5rem;
   display: flex;
@@ -81,7 +79,7 @@ watch(() => props.modelValue, (newValue) => {
   gap: 10px;
 }
 
-.formInput__input {
+.formSelect__textarea {
   margin: 0;
   outline: none;
   border: 2px solid #ccc;
@@ -93,9 +91,10 @@ watch(() => props.modelValue, (newValue) => {
   font-size: 1rem;
   resize: none;
   transition: border 0.5s;
+  min-height: 100px;
 }
 
-.formInput__remark {
+.formSelect__remark {
   position: absolute;
   padding: 5px;
   background-color: var(--color-white);
@@ -105,38 +104,38 @@ watch(() => props.modelValue, (newValue) => {
   top: 16px;
 }
 
-.formInput.invalid .formInput__error, .formInput.invalid .formInput__remark {
+.formSelect.invalid .formSelect__error, .formSelect.invalid .formSelect__remark {
   display: block;
 }
 
-.formInput.formInput.success .formInput__placeholder, .formInput.success .formInput__remark {
+.formSelect.formSelect.success .formSelect__placeholder, .formSelect.success .formSelect__remark {
   display: block;
 }
 
-.formInput__error {
+.formSelect__error {
   display: none;
   color: #e53935;
 }
 
-.formInput__placeholder {
+.formSelect__placeholder {
   display: none;
   color: var(--main-textColor);
   
 }
 
-.formInput.invalid .formInput__input {
+.formSelect.invalid .formSelect__textarea {
   border-color: #e53935;
 }
 
-.formInput.success .formInput__input {
+.formSelect.success .formSelect__textarea {
   border-color: #42b983;
 }
 
-.formInput.focus .formInput__input {
+.formSelect.focus .formSelect__textarea {
   border-color: #a98307;
 }
 
-.formInput__label {
+.formSelect__label {
   display: block;
   font-weight: 500;
 }
