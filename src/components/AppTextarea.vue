@@ -56,7 +56,7 @@ watch(() => props.modelValue, (newValue) => {
     </div>
     <label
       class="formSelect__label"
-      for="name">
+      for="id">
       {{ label }}
     </label>
     <textarea

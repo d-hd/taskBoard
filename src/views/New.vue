@@ -3,6 +3,7 @@
 import { computed, reactive, ref, watch } from 'vue'
 import AppInput from '@/components/AppInput.vue'
 import AppTextarea from '@/components/AppTextarea.vue'
+import AppDate from '@/components/AppDate.vue'
 
 const titleValue = ref('')
 const tagValue = ref('')
@@ -16,6 +17,10 @@ const elementsClasses = reactive({
 const validateInput = (value) => {
   return value.trim().length > 0 ? 'success' : 'invalid'
 }
+
+const disableButton = computed(() => {
+  return Object.values(elementsClasses).some(value => value === 'invalid' || value === null)
+})
 
 watch([titleValue, tagValue, descriptionValue], (newValues, oldValues) => {
   newValues.forEach((element, i) => {
@@ -55,12 +60,7 @@ watch([titleValue, tagValue, descriptionValue], (newValues, oldValues) => {
       placeholder="Введите тег"
       label="Тег" />
 
-    <div class="form-control">
-      <label for="date">Дата дедлайна</label>
-      <input
-        id="date"
-        type="date">
-    </div>
+    <AppDate />
 
     <AppTextarea
       id="description"
@@ -69,7 +69,9 @@ watch([titleValue, tagValue, descriptionValue], (newValues, oldValues) => {
       placeholder="Описание"
       label="Описание" />
 
-    <AppButton type="primary">
+    <AppButton 
+      type="primary"
+      :disabled="disableButton">
       Создать
     </AppButton>
   </form>
