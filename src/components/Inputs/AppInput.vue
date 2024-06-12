@@ -1,5 +1,7 @@
 <script setup>
 import { ref, defineEmits, watch } from 'vue'
+import FormInputRemark from '@/components/Inputs/FormInputRemark.vue'
+import '@/assets/inputs.css'
 
 const props = defineProps({
   placeholder: {
@@ -31,7 +33,6 @@ const updateValue = () => {
 }
 
 const changeFocusClass = (event) => {
-  console.log(event)
   if (event.type === 'focus') {
     focusClass.value = event.type
   } else [
@@ -46,14 +47,10 @@ watch(() => props.modelValue, (newValue) => {
 
 <template>
   <div :class="['formInput', focusClass]">
-    <div class="formInput__remark">
-      <div class="formInput__error">
-        {{ errorText }}
-      </div>
-      <div class="formInput__placeholder">
-        {{ placeholder }}
-      </div>
-    </div>
+    <FormInputRemark
+      :placeholder="placeholder"
+      :label="label"
+      :errorText="errorText" />
     <label
       class="formInput__label"
       for="name">
@@ -73,14 +70,6 @@ watch(() => props.modelValue, (newValue) => {
 </template>
 
 <style scoped>
-.formInput {
-  position: relative;
-  margin-bottom: 0.5rem;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
 .formInput__input {
   margin: 0;
   outline: none;
@@ -93,51 +82,5 @@ watch(() => props.modelValue, (newValue) => {
   font-size: 1rem;
   resize: none;
   transition: border 0.5s;
-}
-
-.formInput__remark {
-  position: absolute;
-  padding: 5px;
-  background-color: var(--color-white);
-  font-size: 10px;
-  display: none;
-  left: 12px;
-  top: 16px;
-}
-
-.formInput.invalid .formInput__error, .formInput.invalid .formInput__remark {
-  display: block;
-}
-
-.formInput.formInput.success .formInput__placeholder, .formInput.success .formInput__remark {
-  display: block;
-}
-
-.formInput__error {
-  display: none;
-  color: #e53935;
-}
-
-.formInput__placeholder {
-  display: none;
-  color: var(--main-textColor);
-  
-}
-
-.formInput.invalid .formInput__input {
-  border-color: #e53935;
-}
-
-.formInput.success .formInput__input {
-  border-color: #42b983;
-}
-
-.formInput.focus .formInput__input {
-  border-color: #a98307;
-}
-
-.formInput__label {
-  display: block;
-  font-weight: 500;
 }
 </style>

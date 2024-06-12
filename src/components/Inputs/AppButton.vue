@@ -1,6 +1,6 @@
 <script setup>
 const props = defineProps({
-  type: {
+  color: {
     type: String,
     desc: 'Тип кнопки',
     validator: (value) => ['primary', 'danger', 'warning'].includes(value)
@@ -8,6 +8,10 @@ const props = defineProps({
   disabled: {
     type: Boolean,
     desc: 'Включает/отключает дизейбл'
+  },
+  text: {
+    type: String,
+    desc: 'Текст кнопки'
   }
 })
 </script>
@@ -15,7 +19,7 @@ const props = defineProps({
 <template>
   <button
     class="btn"
-    :class="type"
+    :class="color"
     :disabled="disabled">
     Взять в работу
   </button>

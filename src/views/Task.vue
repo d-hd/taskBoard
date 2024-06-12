@@ -1,6 +1,6 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <script setup>
-import AppStatus from '../components/AppStatus.vue'
+import AppStatus from '@/components/AppStatus.vue'
 </script>
 
 <template>
@@ -16,10 +16,10 @@ import AppStatus from '../components/AppStatus.vue'
       <AppButton>
         Взять в работу
       </AppButton>
-      <AppButton type="primary">
+      <AppButton color="primary">
         Завершить
       </AppButton>
-      <AppButton type="danger">
+      <AppButton color="danger">
         Отменить
       </AppButton>
     </div>

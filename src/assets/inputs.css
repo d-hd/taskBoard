@@ -1,0 +1,59 @@
+.formInput {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.formInput__remark {
+  position: absolute;
+  padding: 5px;
+  background-color: var(--color-white);
+  font-size: 10px;
+  display: none;
+  left: 12px;
+  top: 21px;
+  z-index: 3;
+}
+
+.formInput.invalid .formInput__error, .formInput.invalid .formInput__remark {
+  display: block;
+}
+
+.formInput.formInput.success .formInput__placeholder, .formInput.success .formInput__remark {
+  display: block;
+}
+
+.formInput__error {
+  display: none;
+  color: #e53935;
+}
+
+.formInput__placeholder {
+  display: none;
+  color: var(--main-textColor);
+  
+}
+
+.formInput.invalid .formSelect__textarea,
+.formInput.invalid .formInput__input,
+.formInput.invalid .dp-custom-input {
+  border-color: #e53935;
+}
+
+.formInput.success .formSelect__textarea,
+.formInput.success .formInput__input,
+.formInput.success .dp-custom-input {
+  border-color: #42b983;
+}
+
+.formInput.focus .formSelect__textarea,
+.formInput.focus .formInput__input,
+.formInput.focus .dp-custom-input {
+  border-color: #a98307;
+}
+
+.formInput__label {
+  display: block;
+  font-weight: 500;
+}

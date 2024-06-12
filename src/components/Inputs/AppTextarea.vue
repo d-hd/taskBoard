@@ -1,5 +1,7 @@
 <script setup>
 import { ref, defineEmits, watch } from 'vue'
+import FormInputRemark from '@/components/Inputs/FormInputRemark.vue'
+import '@/assets/inputs.css'
 
 const props = defineProps({
   placeholder: {
@@ -31,7 +33,6 @@ const updateValue = () => {
 }
 
 const changeFocusClass = (event) => {
-  console.log(event)
   if (event.type === 'focus') {
     focusClass.value = event.type
   } else [
@@ -45,15 +46,11 @@ watch(() => props.modelValue, (newValue) => {
 </script>
 
 <template>
-  <div :class="['formSelect', focusClass]">
-    <div class="formSelect__remark">
-      <div class="formSelect__error">
-        {{ errorText }}
-      </div>
-      <div class="formSelect__placeholder">
-        {{ placeholder }}
-      </div>
-    </div>
+  <div :class="['formInput formSelect', focusClass]">
+    <FormInputRemark
+      :placeholder="placeholder"
+      :label="label"
+      :errorText="errorText" />
     <label
       class="formSelect__label"
       for="id">
@@ -71,14 +68,6 @@ watch(() => props.modelValue, (newValue) => {
 </template>
 
 <style scoped>
-.formSelect {
-  position: relative;
-  margin-bottom: 0.5rem;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
 .formSelect__textarea {
   margin: 0;
   outline: none;
@@ -92,51 +81,5 @@ watch(() => props.modelValue, (newValue) => {
   resize: none;
   transition: border 0.5s;
   min-height: 100px;
-}
-
-.formSelect__remark {
-  position: absolute;
-  padding: 5px;
-  background-color: var(--color-white);
-  font-size: 10px;
-  display: none;
-  left: 12px;
-  top: 16px;
-}
-
-.formSelect.invalid .formSelect__error, .formSelect.invalid .formSelect__remark {
-  display: block;
-}
-
-.formSelect.formSelect.success .formSelect__placeholder, .formSelect.success .formSelect__remark {
-  display: block;
-}
-
-.formSelect__error {
-  display: none;
-  color: #e53935;
-}
-
-.formSelect__placeholder {
-  display: none;
-  color: var(--main-textColor);
-  
-}
-
-.formSelect.invalid .formSelect__textarea {
-  border-color: #e53935;
-}
-
-.formSelect.success .formSelect__textarea {
-  border-color: #42b983;
-}
-
-.formSelect.focus .formSelect__textarea {
-  border-color: #a98307;
-}
-
-.formSelect__label {
-  display: block;
-  font-weight: 500;
 }
 </style>
