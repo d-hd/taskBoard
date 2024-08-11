@@ -15,8 +15,8 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-size: 16px;
-  color: #2c3e50;
-  background: #2c3e50;
+  color: var(--main-textColor);
+  background: var(--main-textColor);
 }
 
 hr {
@@ -64,14 +64,6 @@ h2 {
 h3 {
   font-size: 1.35rem;
 }
-
-/*.primary {*/
-/*    color: #42b983;*/
-/*}*/
-
-/*.danger {*/
-/*    color: #e53935;*/
-/*}*/
 
 .container {
   margin: 0 auto;
@@ -131,43 +123,6 @@ h3 {
 
 .list-item:hover {
   background: #eee;
-}
-
-.alert {
-  padding: 1rem 1.5rem;
-  border-left-width: 0.5rem;
-  border-left-style: solid;
-  margin: 1rem 0;
-  position: relative;
-  border-bottom-right-radius: 2px;
-  border-top-right-radius: 2px;
-}
-
-.alert.primary {
-  border-color: #42b983;
-  background-color: #f8f8f8;
-}
-
-.alert.danger {
-  border-color: #e53935;
-  background-color: #f8f8f8;
-}
-
-.alert.warning {
-  border-color: #c25205;
-  background-color: #f8f8f8;
-}
-
-.alert p {
-  color: #222;
-  line-height: 1.7;
-}
-
-.alert-title {
-  text-transform: uppercase;
-  font-weight: 600;
-  margin-bottom: -0.4rem;
-  color: #222;
 }
 
 .modal {

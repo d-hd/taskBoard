@@ -1,13 +1,13 @@
 <script setup>
 import { RouterView } from 'vue-router'
 import TheNavbar from './components/TheNavbar.vue'
+import AppAlert from './components/AppAlert.vue'
 </script>
 
 <template>
   <TheNavbar />
+  <AppAlert />
   <div class="container with-nav">
     <RouterView />
   </div>
 </template>
-
-<style scoped></style>
