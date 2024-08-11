@@ -8,31 +8,29 @@ import { useCreateTaskStore } from '@/stores/createTask.js'
 const titleValue = ref('')
 const tagValue = ref('')
 const descriptionValue = ref('')
-const dateValue = ref('')
+const deadlineValue = ref('')
 const elementsClasses = reactive({
   title: null,
   tag: null,
   description: null,
   date: null
 })
-const createTask = useCreateTaskStore()
+const { setTask } = useCreateTaskStore()
 
 const validateInput = (value) => {
   return value.trim().length ? 'success' : 'invalid'
 }
 
 const validateSubmitHandler = () => {
-  titleValue
-  tagValue
-  descriptionValue
-  dateValue
+  console.log('validateSubmitHandler')
+  setTask({titleValue, tagValue, descriptionValue, deadlineValue})
 }
 
 const disableButton = computed(() => {
   return Object.values(elementsClasses).some(value => value === 'invalid' || value === null)
 })
 
-watch([titleValue, tagValue, descriptionValue, dateValue], (newValues, oldValues) => {
+watch([titleValue, tagValue, descriptionValue, deadlineValue], (newValues, oldValues) => {
   newValues.forEach((element, i) => {
     if (element === oldValues[i]) {
       return
@@ -85,7 +83,7 @@ watch([titleValue, tagValue, descriptionValue, dateValue], (newValues, oldValues
       <AppDate
         label="Дедлайн"
         :class="elementsClasses.date"
-        @updateDate="(date) => dateValue = date" />
+        @updateDate="(date) => deadlineValue = date" />
     </div>
 
     <div class="newTask__item">

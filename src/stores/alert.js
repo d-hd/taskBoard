@@ -9,15 +9,16 @@ export const useAlertStore = defineStore('alert', () => {
   })
 
   const closeAlert = () => {
-    alert = {
-      type: '',
-      title: '',
-      text: ''
-    }
+    alert.type = ''
+    alert.title = ''
+    alert.text = ''
   }
 
   const showAlert = (type, title, text) => {
-    alert.value = { type, title, text }
+    console.log('showAlert', type, title, text)
+    alert.type = type
+    alert.title = title
+    alert.text = text
   }
 
   return { alert, closeAlert, showAlert }

@@ -3,23 +3,22 @@ import AppButton from '@/components/Inputs/AppButton.vue'
 import { useAlertStore } from '@/stores/alert.js'
 
 const { alert, closeAlert } = useAlertStore()
-const { type, title, text } = alert
 </script>
 
 <template>
   <div 
-    v-if="text"
+    v-if="alert.text"
     class="alert"
-    :class="type">
+    :class="alert.type">
     <h3 class="alert__title">
-      {{ title }}
+      {{ alert.title }}
     </h3>
     <p class="alert__text">
-      {{ text }}
+      {{ alert.text }}
     </p>
     <AppButton 
       :color="alert.type"
-      @action="closeAlert">
+      @click="closeAlert">
       Закрыть
     </AppButton>
   </div>
