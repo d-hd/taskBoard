@@ -5,9 +5,11 @@ import AppAlert from './components/AppAlert.vue'
 </script>
 
 <template>
-  <TheNavbar />
-  <AppAlert />
-  <div class="container with-nav">
-    <RouterView />
+  <div class="wrapper">
+    <TheNavbar />
+    <AppAlert />
+    <div class="container with-nav">
+      <RouterView />
+    </div>
   </div>
 </template>

@@ -21,7 +21,7 @@ const props = defineProps({
     class="btn"
     :class="color"
     :disabled="disabled">
-    Взять в работу
+    <slot />
   </button>
 </template>
 

@@ -3,6 +3,7 @@ import { computed, reactive, ref, watch } from 'vue'
 import AppInput from '@/components/Inputs/AppInput.vue'
 import AppTextarea from '@/components/Inputs/AppTextarea.vue'
 import AppDate from '@/components/Inputs/AppDate.vue'
+import AppLoader from '@/components/AppLoader.vue'
 import { useCreateTaskStore } from '@/stores/createTask.js'
 
 const titleValue = ref('')
@@ -15,14 +16,15 @@ const elementsClasses = reactive({
   description: null,
   date: null
 })
-const { setTask } = useCreateTaskStore()
+const createTaskStore = useCreateTaskStore()
+const { setTask } = createTaskStore
+const isLoading = computed(() => createTaskStore.isLoading)
 
 const validateInput = (value) => {
   return value.trim().length ? 'success' : 'invalid'
 }
 
 const validateSubmitHandler = () => {
-  console.log('validateSubmitHandler')
   setTask({titleValue, tagValue, descriptionValue, deadlineValue})
 }
 
@@ -94,12 +96,15 @@ watch([titleValue, tagValue, descriptionValue, deadlineValue], (newValues, oldVa
         placeholder="Описание"
         label="Описание" />
     </div>
-    <AppButton 
-      color="primary"
-      :disabled="disableButton"
-      type="submit">
-      Создать
-    </AppButton>
+    <div class="newTask__buttonWrap">
+      <AppButton 
+        color="primary"
+        :disabled="disableButton"
+        type="submit">
+        Создать
+      </AppButton>
+      <AppLoader :isShow="isLoading" />
+    </div>
   </form>
 </template>
 
@@ -110,5 +115,9 @@ watch([titleValue, tagValue, descriptionValue, deadlineValue], (newValues, oldVa
 
 .newTask__item {
   margin-bottom: 20px;
+}
+
+.newTask__buttonWrap {
+  display: flex;
 }
 </style>
