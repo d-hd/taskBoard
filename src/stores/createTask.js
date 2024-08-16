@@ -28,12 +28,10 @@ export const useCreateTaskStore = defineStore('createTask', () => {
     try {
       isLoading.value = true
 
-      const respons = await fetch('https://task-board-137e2-default-rtdb.firebaseio.com/', {
+      const respons = await fetch(process.env.VUE_APP_FIREBASE_DATABASE_URL, {
         method: 'POST',
         body: JSON.stringify(newTask)
       })
-
-      await new Promise((resolve) => setTimeout(resolve, 5000))
 
       if (!respons || respons.status !== 200) {
         alertStore.showAlert(
