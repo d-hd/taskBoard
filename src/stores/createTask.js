@@ -2,6 +2,7 @@ import { ref } from 'vue'
 import { defineStore } from 'pinia'
 import { useAlertStore } from '@/stores/alert.js'
 import { useRouter } from 'vue-router'
+import errorMessages from '@/constants/errorMessages.js'
 
 export const useCreateTaskStore = defineStore('createTask', () => {
   const alertStore = useAlertStore()
@@ -12,7 +13,7 @@ export const useCreateTaskStore = defineStore('createTask', () => {
     const { titleValue, tagValue, descriptionValue, deadlineValue } = task
 
     if (!titleValue || !descriptionValue || !deadlineValue || !tagValue) {
-      alertStore.showAlert('warning', 'Предупреждение', 'Пожалуйста, заполните все поля.')
+      alertStore.showAlert('warning', errorMessages.SUCCESS, errorMessages.FIELDS_REQUIRE)
       return
     }
 
@@ -28,17 +29,13 @@ export const useCreateTaskStore = defineStore('createTask', () => {
     try {
       isLoading.value = true
 
-      const respons = await fetch(process.env.VUE_APP_FIREBASE_DATABASE_URL, {
+      const respons = await fetch(import.meta.env.VITE_APP_FIREBASE_DATABASE_URL, {
         method: 'POST',
         body: JSON.stringify(newTask)
       })
 
       if (!respons || respons.status !== 200) {
-        alertStore.showAlert(
-          'danger',
-          'Ошибка',
-          'Данные не были загружены на сервер. Попробуйте позже или обратитесь к администратору.'
-        )
+        alertStore.showAlert('danger', errorMessages.ERROR, errorMessages.UPLOAD_FAILED)
 
         isLoading.value = false
         return
@@ -47,13 +44,9 @@ export const useCreateTaskStore = defineStore('createTask', () => {
 
       router.push('/tasks')
 
-      alertStore.showAlert('primary', 'Успешно', 'Задача создана')
+      alertStore.showAlert('primary', errorMessages.SUCCESS, errorMessages.TASK_CREATED)
     } catch (error) {
-      alertStore.showAlert(
-        'danger',
-        'Ошибка',
-        'Данные не были загружены на сервер. Попробуйте позже или обратитесь к администратору.'
-      )
+      alertStore.showAlert('danger', errorMessages.ERROR, errorMessages.UPLOAD_FAILED)
 
       isLoading.value = false
     }
