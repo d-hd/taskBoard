@@ -1,14 +1,15 @@
 import { ref } from 'vue'
 import { defineStore } from 'pinia'
-import { useAlertStore } from '@/stores/alert.js'
+import { useAlertStore } from '@/stores/alertStore.js'
 import { useRouter } from 'vue-router'
 import errorMessages from '@/constants/errorMessages.js'
 
-export const useCreateTaskStore = defineStore('createTask', () => {
+export const useTaskStore = defineStore('task', () => {
   const alertStore = useAlertStore()
   const router = useRouter()
   const isLoading = ref(false)
 
+  // Creating a new task
   async function setTask(task) {
     const { titleValue, tagValue, descriptionValue, deadlineValue } = task
 
@@ -52,5 +53,36 @@ export const useCreateTaskStore = defineStore('createTask', () => {
     }
   }
 
-  return { setTask, isLoading }
+  // Getting all tasks as an array
+  async function getTaskList() {
+    try {
+      isLoading.value = true
+
+      const respons = await fetch(import.meta.env.VITE_APP_FIREBASE_DATABASE_URL)
+
+      if (!respons || respons.status !== 200) {
+        alertStore.showAlert('danger', errorMessages.ERROR, errorMessages.UPLOAD_FAILED)
+
+        isLoading.value = false
+        return
+      }
+
+      const data = await respons.json()
+
+      const arrayDataWithIds = Object.entries(data).map(([id, value]) => ({
+        id,
+        ...value
+      }))
+
+      isLoading.value = false
+
+      return Object.values(data)
+    } catch (error) {
+      alertStore.showAlert('danger', errorMessages.ERROR, errorMessages.UPLOAD_FAILED)
+
+      isLoading.value = false
+    }
+  }
+
+  return { getTaskList, setTask, isLoading }
 })

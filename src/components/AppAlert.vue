@@ -1,6 +1,6 @@
 <script setup>
 import AppButton from '@/components/Inputs/AppButton.vue'
-import { useAlertStore } from '@/stores/alert.js'
+import { useAlertStore } from '@/stores/alertStore.js'
 import { watch, ref, onBeforeUnmount, computed  } from 'vue'
 
 const { alert, closeAlert } = useAlertStore()

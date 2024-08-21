@@ -4,7 +4,7 @@ import AppInput from '@/components/Inputs/AppInput.vue'
 import AppTextarea from '@/components/Inputs/AppTextarea.vue'
 import AppDate from '@/components/Inputs/AppDate.vue'
 import AppLoader from '@/components/AppLoader.vue'
-import { useCreateTaskStore } from '@/stores/createTask.js'
+import { useTaskStore  } from '@/stores/taskStore.js'
 
 const titleValue = ref('')
 const tagValue = ref('')
@@ -16,7 +16,7 @@ const elementsClasses = reactive({
   description: null,
   date: null
 })
-const createTaskStore = useCreateTaskStore()
+const createTaskStore = useTaskStore()
 const { setTask } = createTaskStore
 const isLoading = computed(() => createTaskStore.isLoading)
 
