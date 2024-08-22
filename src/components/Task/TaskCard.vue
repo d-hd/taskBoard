@@ -1,24 +1,53 @@
 <script setup>
-import AppStatus from '@/components/AppStatus.vue'
+const props = defineProps({
+  id: { 
+    type: String, 
+    desс: 'Идентификатор задачи' 
+  },
+  dateCreated: { 
+    type: String, 
+    desс: 'Дата создания задачи' 
+  },
+  deadline: { 
+    type: String, 
+    desс: 'Срок выполнения задачи' 
+  },
+  description: { 
+    type: String, 
+    desс: 'Описание задачи' 
+  },
+  status: { 
+    type: String, 
+    desс: 'Статус задачи' 
+  },
+  tags: { 
+    type: String, 
+    desс: 'Теги задачи' 
+  },
+  title: { 
+    type: String, 
+    desс: 'Название задачи' 
+  },
+})
 </script>
 
 <template>
   <div class="card">
     <h2 class="card-title">
-      Название задачи
-      <AppStatus :type="'done'" />
+      {{ title }}
     </h2>
+    <AppStatus :type="'done'" />
+    <p>{{ description }}</p>
     <p>
-      <strong>
-        <small>
-          {{ new Date().toLocaleDateString() }}
-        </small>
-      </strong>
+      Дедлайн: {{ deadline }}
     </p>
-    <AppButton />
-    <button class="btn primary">
+    <AppButton 
+      color="primary">
       Посмотреть
-    </button>
+    </AppButton>
+    <p>
+      {{ dateCreated }}
+    </p>
   </div>
 </template>
 

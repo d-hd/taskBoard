@@ -1,6 +1,5 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <script setup>
-import AppStatus from '@/components/AppStatus.vue'
 </script>
 
 <template>
@@ -28,5 +27,3 @@ import AppStatus from '@/components/AppStatus.vue'
     Задачи с id = <strong>Tут АЙДИ</strong> нет.
   </h3>
 </template>
-
-<style scoped></style>

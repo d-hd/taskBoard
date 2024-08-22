@@ -69,6 +69,13 @@ export const useTaskStore = defineStore('task', () => {
 
       const data = await respons.json()
 
+      if (data === null) {
+        isLoading.value = false
+        return null
+      }
+
+      await new Promise((resolve) => setTimeout(resolve, 3000))
+
       const arrayDataWithIds = Object.entries(data).map(([id, value]) => ({
         id,
         ...value
@@ -76,7 +83,7 @@ export const useTaskStore = defineStore('task', () => {
 
       isLoading.value = false
 
-      return Object.values(data)
+      return arrayDataWithIds
     } catch (error) {
       alertStore.showAlert('danger', errorMessages.ERROR, errorMessages.UPLOAD_FAILED)
 
